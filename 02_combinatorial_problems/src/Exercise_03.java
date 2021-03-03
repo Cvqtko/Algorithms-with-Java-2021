@@ -16,7 +16,6 @@ public class Exercise_03 {
 	public static void variations(int index, char[] elements, char[] variations, boolean[] used) {
 		if (index == variations.length) {
 			print(variations);
-			return;
 		} else {
 			for (int i = 0; i < elements.length; i++) {
 				if (!used[i]) {

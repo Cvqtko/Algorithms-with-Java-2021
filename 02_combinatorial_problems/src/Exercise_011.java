@@ -13,7 +13,6 @@ public class Exercise_011 {
 	public static void permute(int index, char[] elements) {
 		if (index == elements.length) {
 			print(elements);
-			return;
 		} else {
 			permute(index + 1, elements);
 			for (int i = index + 1; i < elements.length; i++) {

@@ -15,7 +15,6 @@ public class Exercise_02 {
 	public static void permute(int index, char[] elements, HashSet<String> swapped) {
 		if (index == elements.length) {
 			swapped.add(new String(elements));
-			return;
 		} else {
 			permute(index + 1, elements, swapped);
 			for (int i = index + 1; i < elements.length; i++) {

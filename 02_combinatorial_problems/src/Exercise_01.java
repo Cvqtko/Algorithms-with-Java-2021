@@ -15,7 +15,6 @@ public class Exercise_01 {
 	public static void permute(int index, char[] elements, char[] perm, boolean[] used) {
 		if (index == elements.length) {
 			print(perm);
-			return;
 		} else {
 			for (int i = 0; i < elements.length; i++) {
 				if (!used[i]) {

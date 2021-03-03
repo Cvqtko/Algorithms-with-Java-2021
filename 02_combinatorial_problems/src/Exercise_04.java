@@ -15,7 +15,6 @@ public class Exercise_04 {
 	public static void variations(int index, char[] elements, char[] variations) {
 		if (index == variations.length) {
 			print(variations);
-			return;
 		} else {
 			for (int i = 0; i < elements.length; i++) {
 
