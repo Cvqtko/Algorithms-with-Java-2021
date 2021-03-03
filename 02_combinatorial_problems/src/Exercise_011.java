@@ -1,26 +1,24 @@
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 
-public class Exercise_02 {
+public class Exercise_011 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		char[] elements = scanner.nextLine().replaceAll("\\s+", "").toCharArray();
-		HashSet<String> swapped = new HashSet<>();
-		permute(0, elements, swapped);
-		print(swapped);
+
+		permute(0, elements);
 	}
 
-	public static void permute(int index, char[] elements, HashSet<String> swapped) {
+	public static void permute(int index, char[] elements) {
 		if (index == elements.length) {
-			swapped.add(new String(elements));
+			print(elements);
 			return;
 		} else {
-			permute(index + 1, elements, swapped);
+			permute(index + 1, elements);
 			for (int i = index + 1; i < elements.length; i++) {
 				swap(index, i, elements);
-				permute(index + 1, elements, swapped);
+				permute(index + 1, elements);
 				swap(index, i, elements);
 			}
 		}
@@ -32,8 +30,8 @@ public class Exercise_02 {
 		elements[second] = temp;
 	}
 
-	private static void print( HashSet<String> swapped) {
-		System.out.println(String.join("\n", swapped));
+	private static void print(char[] perm) {
+		System.out.println(new String(perm));
 
 	}
 
