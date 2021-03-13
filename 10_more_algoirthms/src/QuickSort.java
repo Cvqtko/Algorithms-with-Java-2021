@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class QuickSort {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		int[] array = { 3, 2, 1, 6, 4, 5 };
 		quickSort(array, 0, array.length-1);
 		System.out.println(Arrays.toString(array));
