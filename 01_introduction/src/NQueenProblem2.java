@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NQueen2 {
+public class NQueenProblem2 {
 
    /***************************************************************************
     * Return true if queen placement q[n] does not conflict with
