@@ -1,5 +1,5 @@
 
-public class RecursionExample {
+public class Recursion {
 	static int count = 0;
 
 	static void p() {
