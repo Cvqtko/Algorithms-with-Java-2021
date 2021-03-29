@@ -10,7 +10,6 @@ public class Exercise_04 {
 
 	public static boolean[] visited;
 	public static int[] prevNodes;
-
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int n = Integer.parseInt(scanner.nextLine());
@@ -56,13 +55,13 @@ public class Exercise_04 {
 
 	private static void bfs(List<List<Integer>> graph, int source, int destination) {
 		Deque<Integer> queue = new ArrayDeque<>();
-
+		
 		queue.offer(source);
 		visited[source] = true;
 		while (!queue.isEmpty()) {
 			int node = queue.poll();
 			if (node == destination) {
-				return;
+				break;
 			}
 			for (int child : graph.get(node)) {
 				if (!visited[child]) {
