@@ -65,5 +65,23 @@ public class Exercise_01 {
 		}
 
 	}
+	// another solution using breadth first search
+	private static void bfs(int start, List<Deque<Integer>> components, List<List<Integer>> graph, boolean[] visited) {
+		Deque<Integer> queue = new ArrayDeque<Integer>();
+		visited[start] = true;
+		queue.offer(start);
+		while(!queue.isEmpty()) {
+			int node = queue.poll();
+			components.get(components.size()-1).offer(node);
+			
+			for(int child:graph.get(node)) {
+				if(!visited[child]) {
+					visited[child] = true;
+					queue.offer(child);
+				}
+			}
+		}
+	}
+	
 
 }
