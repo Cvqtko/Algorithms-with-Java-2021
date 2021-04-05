@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Exercise_03 {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	}
 }
