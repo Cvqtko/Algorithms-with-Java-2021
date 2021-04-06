@@ -1,50 +1,59 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Exercise_03 {
+public class Exercise_05_TODO_with_BFS {
 
 	public static Map<String, List<String>> graph = new HashMap<>();
+	public static Set<String> edgesToRemove = new HashSet<>();
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String source = null;
 
 		String line = scanner.nextLine();
-		while (!line.equals("End")) {
+		while (!line.equals("")) {
 
-			String[] tokens = line.split("-");
+			String[] tokens = line.split(" -> ");
 
 			if (source == null) {
 				source = tokens[0];
 			}
 
+			String[] edges = tokens[1].split(" ");
 			graph.putIfAbsent(tokens[0], new ArrayList<>());
-
-			graph.get(tokens[0]).add(tokens[1]);
-
+			for (String edge : edges) {
+				graph.get(tokens[0]).add(edge);
+			}
 			line = scanner.nextLine();
 		}
 
 		Set<String> visited = new HashSet<>();
 		Set<String> cycles = new HashSet<>();
 
-		try {
-			dfs(source, visited, cycles);
-			System.out.println("Acyclic: Yes");
-		} catch (IllegalStateException ex) {
-			System.out.println(ex.getMessage());
+		for (String edge : graph.keySet()) {
+			dfs(graph, edge, visited, cycles);
 		}
+		edgesToRemove.stream().forEach(e -> System.out.println(e));
 	}
 
-	private static void dfs(String source, Set<String> visited, Set<String> cycles) {
+	private static void dfs(Map<String, List<String>> graph, String source, Set<String> visited, Set<String> cycles) {
 		if (cycles.contains(source)) {
-			throw new IllegalStateException("Acyclic: No");
+			edgesToRemove.add(source + " - " + graph.get(source).get(0));
+
+			String dest = graph.get(source).get(0);
+			if (graph.get(dest).contains(source)) {
+				graph.get(dest).remove(source);
+			}
+			if (graph.get(source).contains(dest)) {
+				graph.get(source).remove(dest);
+			}
+			return;
+
 		}
 		if (visited.contains(source)) {
 			return;
@@ -58,11 +67,10 @@ public class Exercise_03 {
 		if (children == null) {
 			return;
 		}
-		
-		
+
 		for (String child : children) {
 
-			dfs(child, visited, cycles);
+			dfs(graph, child, visited, cycles);
 
 		}
 		cycles.remove(source);
