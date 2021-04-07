@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Exercise_05_TODO_with_BFS {
+public class Exercise_05_dfs {
 
 	public static Map<String, List<String>> graph = new HashMap<>();
 	public static Set<String> edgesToRemove = new HashSet<>();
